@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		
+		
+		
+		
+		<script type="text/javascript">
+			
+//			function formateTime(ti){
+				var time=new Date();
+				var newtime=time.getTime();
+				var old=new Date("may 4,2017 01:15:00")
+				var oldtime=old.getTime();
+//				document.write(newtime);
+//				document.write(old);
+//				document.write(oldtime);
+				var tn=Math.floor((newtime-oldtime)/1000/60/60/24/365)
+				var ty=Math.floor((newtime-oldtime)/1000/60/60/24%12)
+				var tt=Math.floor((newtime-oldtime)/1000/60/60/24%30)
+				var th=Math.floor((newtime-oldtime)/1000/60/60%24)
+				var tm=Math.floor((newtime-oldtime)/1000/60%60)
+				var ts=Math.floor((newtime-oldtime)/1000%60)
+				
+				document.write("已经过去了"+tn+"年"+ty+"月"+tt+"天"+th+"小时"+tm+"分"+ts+"秒")
+//			}
+				
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

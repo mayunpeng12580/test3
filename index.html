@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+		<style type="text/css">
+			
+			.wrap{
+				margin: 20px;
+				width: 200px;
+				height: 200px;
+				/*background-image: url(img/trash1.png);*/
+				overflow: hidden;
+			}
+			
+			.list{
+				position: absolute;
+				top:20px;
+				left: 300px;
+			}
+			
+			.list li{
+				margin: 10px;
+			}
+			
+			.str{
+				position: relative;
+				top: 20px;
+				left: 200px;
+				color: red;
+			}
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<img src="img/trash1.png" width="200" id="image"/>
+		</div>
+		<ul class="list">
+			<li draggable="true">三国演义</li>
+			<li draggable="true">水浒传</li>
+			<li draggable="true">红楼梦</li>
+			<li draggable="true">西游记</li>
+		</ul>
+		
+		<div class="str"></div>
+		
+		<script type="text/javascript">
+			
+			var wrap=document.getElementsByClassName("wrap")[0];
+			var li=document.querySelectorAll(".list>li");
+			var str=document.getElementsByClassName("str")[0]
+			var img=document.querySelectorAll("#image");
+			var stp;
+			
+			
+			for(var i=0;i<li.length;i++){
+				li[i].ondragstart=function(){
+					stp=this;
+					console.log("11")
+				}
+				li[i].ondragend=function(){
+					stp=null;
+					console.log("22")
+					
+				}
+			}
+				
+			wrap.ondragenter=function(){
+				console.log("进入")
+			}
+			
+			wrap.ondragleave=function(){
+				console.log("离开")
+			}
+			
+			wrap.ondragover=function(e){
+				e.preventDefault();
+				console.log("悬停");
+			}	
+				
+			wrap.ondrop=function(){
+				console.log("松手");
+				if(stp!=null){
+					this.appendChild(stp);
+					console.log("333")
+					var newp = document.createElement("p");
+					newp.innerText+=stp.innerText+"已删除";
+//					=str.innerText
+					str.appendChild(newp)
+					img.src="img/trash2.jpg"
+				}
+
+			}
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
